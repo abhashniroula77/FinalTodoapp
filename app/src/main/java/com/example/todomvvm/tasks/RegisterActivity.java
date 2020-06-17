@@ -55,6 +55,12 @@ public class RegisterActivity extends AppCompatActivity {
                 .allowMainThreadQueries()
                 .build()
                 .taskDao();
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(RegisterActivity.this,LoginActivity.class));
+            }
+        });
 
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override

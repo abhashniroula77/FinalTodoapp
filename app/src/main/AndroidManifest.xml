@@ -5,14 +5,18 @@
     <application
         android:name=".tasks.Notify"
         android:allowBackup="true"
-
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="Do your Todo"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".tasks.RegisterActivity"></activity>
-        <activity android:name=".tasks.LoginActivity">
+        <activity android:name=".tasks.LoginActivity"
+            android:theme="@style/Theme.Design.NoActionBar"> </activity>
+        <activity android:name=".tasks.RegisterActivity"
+            android:theme="@style/Theme.Design.NoActionBar"
+            />
+        <activity android:name=".tasks.SplashActivity"
+            android:theme="@style/Theme.Design.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

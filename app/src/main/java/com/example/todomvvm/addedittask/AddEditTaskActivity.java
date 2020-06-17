@@ -191,7 +191,7 @@ else {
 
             }
 
-            Intent activityIntent = new Intent(this, AddEditTaskActivity.class);
+            Intent activityIntent = new Intent(this, MainActivity.class);
             PendingIntent contentIntent = PendingIntent.getActivity(this,0,activityIntent,0);
             Notification notification = new NotificationCompat.Builder(this,CHANNEL_1_ID)
                     .setSmallIcon(R.drawable.ic_bike)

@@ -96,6 +96,7 @@ public class MainActivity extends AppCompatActivity implements TaskAdapter.ItemC
                 return true;
 
             case R.id.logout:
+                startActivity(new Intent(MainActivity.this,LoginActivity.class));
 
 
                 Toast.makeText(this,"Logout completed",Toast.LENGTH_SHORT).show();
@@ -204,8 +205,9 @@ public class MainActivity extends AppCompatActivity implements TaskAdapter.ItemC
         startActivity(intent);
     }
 
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(MainActivity.this,LoginActivity.class));
 
-
-
-
+    }
 }
