@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/item"
+        android:icon="@drawable/ic_bike"
+        android:title="Delete All"
+      />
+
+    <item android:id="@+id/priorityCheck"
+        android:icon="@drawable/ic_bike"
+        android:title="Priority"
+        />
+
+
+
+
+    <item android:id="@+id/item2"
+
+        android:title="Sort"
+      >
+      <menu>
+
+          <item android:id="@+id/byDate"
+              android:title="Sort by Date"
+              />
+          <item android:id="@+id/byp"
+              android:title="Priority"/>
+      </menu>
+
+    </item>
+
+    <item android:id="@+id/logout"
+        android:title="Logout"
+        />
+
+
+</menu>
