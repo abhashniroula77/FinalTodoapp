@@ -22,6 +22,14 @@
         android:hint="@string/edit_task_description"
         android:paddingBottom="@dimen/activity_horizontal_margin" />
 
+
+    <ImageView
+        android:id = "@+id/speak"
+        android:layout_width = "wrap_content"
+        android:layout_height = "wrap_content"
+        android:background = "?selectableItemBackground"
+        android:src = "@android:drawable/ic_btn_speak_now"/>
+
     <!-- TextView and FrameLayout (which contains buttons) for Priority Selection -->
     <TextView
         style="@style/TextAppearance.AppCompat.Medium"
