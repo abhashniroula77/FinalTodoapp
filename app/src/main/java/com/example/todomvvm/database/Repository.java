@@ -14,14 +14,11 @@ public class Repository {
         dao = appDatabase.taskDao();
     }
 
-    public LiveData<List<TaskEntry>> getTasks(){
-       return dao.loadAllTasks();
+    public LiveData<List<TaskEntry>> getTasks(int userTaskId){
+       return dao.loadAllTasks(userTaskId);
     }
 
- public LiveData<List<UserTask>> getUserTask()
- {
-     return dao.getUserTask();
- }
+
 
 
 

@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.todomvvm.R;
 import com.example.todomvvm.database.TaskEntry;
-import com.example.todomvvm.database.UserTask;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -35,7 +34,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
     final private ItemClickListener mItemClickListener;
     // Class variables for the List that holds task data and the Context
     private List<TaskEntry> mTaskEntries;
-    private List<UserTask> uTaskEntries;
+
     private List<TaskEntry> searchEntries;
     private Context mContext;
     // Date formatter

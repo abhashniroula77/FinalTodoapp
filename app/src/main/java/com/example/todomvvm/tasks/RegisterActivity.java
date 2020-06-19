@@ -18,6 +18,7 @@ import com.example.todomvvm.R;
 import com.example.todomvvm.database.AppDatabase;
 import com.example.todomvvm.database.TaskDao;
 import com.example.todomvvm.database.User;
+import com.example.todomvvm.database.userRepo;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -28,8 +29,9 @@ public class RegisterActivity extends AppCompatActivity {
 
     private Button registerButton;
     private Button cancelButton;
+    private AppDatabase database;
 
-    private TaskDao taskDaoO;
+   private com.example.todomvvm.database.userRepo userRepo;
     private ProgressDialog progressDialog;
 
 
@@ -37,7 +39,8 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-
+        database = AppDatabase.getInstance(this);
+        userRepo = new userRepo(database);
         progressDialog = new ProgressDialog(this);
         progressDialog.setCancelable(false);
         progressDialog.setMessage("Registering");
@@ -45,16 +48,14 @@ public class RegisterActivity extends AppCompatActivity {
         progressDialog.setProgress(0);
 
         name = findViewById(R.id.register_name);
+        database = AppDatabase.getInstance(this);
         lastName = findViewById(R.id.register_lastName);
         email = findViewById(R.id.register_email);
         password = findViewById(R.id.register_password);
         registerButton = findViewById(R.id.register_user);
         cancelButton = findViewById(R.id.cancel_user);
 
-        taskDaoO = Room.databaseBuilder(this, AppDatabase.class, "abhash-database.db")
-                .allowMainThreadQueries()
-                .build()
-                .taskDao();
+
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,7 +73,7 @@ public class RegisterActivity extends AppCompatActivity {
                         @Override
                         public void run() {
                             User user = new User(name.getText().toString(),lastName.getText().toString(),email.getText().toString(),password.getText().toString());
-                           taskDaoO.insert(user);
+                           userRepo.insertUser(user);
                             progressDialog.dismiss();
                             startActivity(new Intent(RegisterActivity.this,LoginActivity.class));
                         }

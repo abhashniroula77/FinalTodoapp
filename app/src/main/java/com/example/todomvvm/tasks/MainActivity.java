@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements TaskAdapter.ItemC
     // Member variables for the adapter and RecyclerView
     private RecyclerView mRecyclerView;
     private TaskAdapter mAdapter;
-
+    private String userTaskId;
 
 
     MainActivityViewModel viewModel;
@@ -122,7 +122,7 @@ public class MainActivity extends AppCompatActivity implements TaskAdapter.ItemC
 
 
 
-
+        userTaskId = getIntent().getStringExtra("userId");
         viewModel = ViewModelProviders.of(this).get(MainActivityViewModel.class);
 
 
@@ -182,11 +182,12 @@ public class MainActivity extends AppCompatActivity implements TaskAdapter.ItemC
             public void onClick(View view) {
                 // Create a new intent to start an AddTaskActivity
                 Intent addTaskIntent = new Intent(MainActivity.this, AddEditTaskActivity.class);
+                addTaskIntent.putExtra("userId",userTaskId);
                 startActivity(addTaskIntent);
             }
         });
 
-        viewModel.getTasks().observe(this, new Observer<List<TaskEntry>>() {
+        viewModel.getTasks(Integer.parseInt(userTaskId)).observe(this, new Observer<List<TaskEntry>>() {
             @Override
             public void onChanged(List<TaskEntry> taskEntries) {
                 mAdapter.setTasks(taskEntries);
@@ -202,6 +203,7 @@ public class MainActivity extends AppCompatActivity implements TaskAdapter.ItemC
         // Launch AddTaskActivity adding the itemId as an extra in the intent
         Intent intent = new Intent(MainActivity.this, AddEditTaskActivity.class);
         intent.putExtra(AddEditTaskActivity.EXTRA_TASK_ID, itemId);
+        intent.putExtra("userId",userTaskId);
         startActivity(intent);
     }
 
