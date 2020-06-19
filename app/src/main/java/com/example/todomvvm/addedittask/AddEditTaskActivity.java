@@ -43,6 +43,8 @@ public class AddEditTaskActivity extends AppCompatActivity {
     // Extra for the task ID to be received after rotation
     public static final String INSTANCE_TASK_ID = "instanceTaskId";
 
+    private int userTaskId;
+
     private final int REQ_CODE = 100;
     // Constants for priority
     public static final int PRIORITY_HIGH = 1;
@@ -71,7 +73,7 @@ public class AddEditTaskActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_edit_task);
 
 
-
+        userTaskId = Integer.parseInt(getIntent().getStringExtra("userId"));
         initViews();
 
         if (savedInstanceState != null && savedInstanceState.containsKey(INSTANCE_TASK_ID)) {
@@ -178,7 +180,7 @@ public class AddEditTaskActivity extends AppCompatActivity {
         int priority = getPriorityFromViews();
         Date date = new Date();
 
-        TaskEntry todo = new TaskEntry(description, priority, date);
+        TaskEntry todo = new TaskEntry(description,userTaskId,priority, date);
         if(description.isEmpty()){
             Toast.makeText(AddEditTaskActivity.this, "Please specify Field is not empty", Toast.LENGTH_SHORT).show();
         }

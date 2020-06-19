@@ -5,6 +5,7 @@
     <application
         android:name=".tasks.Notify"
         android:allowBackup="true"
+        android:alwaysRetainTaskState="true"
         android:icon="@mipmap/ic_launcher"
         android:label="Do your Todo"
         android:roundIcon="@mipmap/ic_launcher_round"
